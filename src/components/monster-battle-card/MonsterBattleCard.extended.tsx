@@ -14,10 +14,11 @@ type MonsterCardProps = {
 
 const MonsterBattleCard: React.FC<MonsterCardProps> = ({
   monster,
-  title = "",
+  title = "No monster",
 }) => {
   return (
     <BattleMonsterCard centralized={!monster}>
+      {!monster && <BattleMonsterTitle>{title}</BattleMonsterTitle>}
       {monster && (
         <Box
           sx={{

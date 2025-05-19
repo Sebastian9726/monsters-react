@@ -89,7 +89,10 @@ describe("monstersReducerExtended", () => {
     // La acción pending debería limpiar el ganador
     const actualState = monstersReducerExtended(
       stateWithWinner,
-      fetchBattleWins.pending(""),
+      fetchBattleWins.pending("", {
+        playerMonster: mockMonster,
+        selectedRandomMonster: mockMonster,
+      }),
     );
 
     expect(actualState).toEqual({
@@ -129,7 +132,7 @@ describe("monstersReducerExtended", () => {
         arg: { playerMonster: mockMonster, selectedRandomMonster: mockMonster },
         requestId: "testRequestId",
         rejectedWithValue: false
-      }
+        }
     };
 
     // La acción rejected debería limpiar el ganador

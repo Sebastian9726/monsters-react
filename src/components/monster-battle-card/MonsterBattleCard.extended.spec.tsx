@@ -33,15 +33,15 @@ describe("MonsterBattleCardExtended", () => {
     expect(screen.getByText("Speed")).toBeInTheDocument();
   });
 
-  it("renders an empty card when no monster is provided", () => {
+  it("renders a card with title when no monster is provided", () => {
     render(<MonsterBattleCard title="Empty Card" />);
     
     // Card should be rendered but without monster details
     expect(screen.queryByText("HP")).not.toBeInTheDocument();
     expect(screen.queryByText("Attack")).not.toBeInTheDocument();
     
-    // Title should not be visible when no monster
-    expect(screen.queryByText("Empty Card")).not.toBeInTheDocument();
+    // Title should be visible when no monster
+    expect(screen.getByText("Empty Card")).toBeInTheDocument();
   });
 
   it("handles null monster value correctly", () => {
@@ -51,7 +51,7 @@ describe("MonsterBattleCardExtended", () => {
     expect(screen.queryByText("HP")).not.toBeInTheDocument();
     expect(screen.queryByText("Attack")).not.toBeInTheDocument();
     
-    // Title should not be visible when monster is null
-    expect(screen.queryByText("Null Monster")).not.toBeInTheDocument();
+    // Title should be visible when monster is null
+    expect(screen.getByText("Null Monster")).toBeInTheDocument();
   });
 });
